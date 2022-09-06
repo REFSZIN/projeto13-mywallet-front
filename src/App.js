@@ -3,6 +3,11 @@ import React from "react";
 import ResetCSS from './assets/css/global.js';
 import UserContext from "./UserContext";
 import { UserProvider } from './UserContext.js';
+import EntryPage from "./Pages/EntryPage.js";
+import ExitPage from "./Pages/ExitPage.js";
+import SignInPage from "./Pages/SignInPage.js";
+import SignUpPage from "./Pages/SignUpPage.js";
+import WalletPage from "./Pages/WalletPage.js";
 
 export default function App (){
 return (
@@ -11,11 +16,11 @@ return (
             <BrowserRouter>
             <ResetCSS/>
                 <Routes>
-                    <Route path="/" element={< />}/>
-                    <Route path="/cadastro" element={< />}/>
-                    <Route path="/wallet" element={</>}/>
-                    <Route path="/saida" element={</>}/>
-                    <Route path="/entrada" element={< />}/>
+                    <Route path="/" element={<SignInPage />}/>
+                    <Route path="/cadastro" element={<SignUpPage />}/>
+                    <Route path="/wallet" element={<WalletPage/>}/>
+                    <Route path="/saida" element={<ExitPage/>}/>
+                    <Route path="/entrada" element={<EntryPage/>}/>
                 </Routes> 
             </BrowserRouter>
         </UserProvider>
