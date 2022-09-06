@@ -1,4 +1,4 @@
-# 📈*Projeto13 - API MyWallet *📈
+# 📈*Projeto13 - MyWallet *📈
 Projeto Front-end será a construção do MyWallet!🙂
 
 # Bibliotecas
