@@ -6,9 +6,9 @@ import { useContext } from "react";
 import { useNavigate  } from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 
-export default function Exit(){
+export default function ExitEdit(){
     const navigate = useNavigate();
-    const {localmenteLogado,postExit, load, setLoad,valorExit,descriçãoExit,setValorExit,setDescriçãoExit,loader,setLoader} = useContext(UserContext);
+    const {localmenteLogado,postExit,load,setLoad,valorExitEdit,descriçãoExitEdit,setValorExitEdit,setDescriçãoExitEdit,loader,setLoader} = useContext(UserContext);
 
     useEffect(() => {
         if( localStorage.length > 0){
@@ -16,7 +16,7 @@ export default function Exit(){
         }
     }, [localmenteLogado]);
 
-    const createExit = (create) =>{
+    const createExitEdit = (create) =>{
         create.preventDefault();
         setLoader(1);
         postExit()
@@ -32,12 +32,12 @@ export default function Exit(){
 
     return(
         <Main>
-            <Title>Nova saída</Title>
-            <Form onSubmit={createExit}>
-                <Input disabled={!loader} type="email" value={valorExit} onChange={e => setValorExit(e.target.value)} placeholder="Valor"required ></Input>
-                <Input disabled={!loader} type="password" value={descriçãoExit} onChange={e => setDescriçãoExit(e.target.value)} placeholder="Descrição" required></Input>
+            <Title>Editar saída</Title>
+            <Form onSubmit={createExitEdit}>
+                <Input disabled={!loader} type="email" value={valorExitEdit} onChange={e => setValorExitEdit(e.target.value)} placeholder="Valor"required ></Input>
+                <Input disabled={!loader} type="password" value={descriçãoExitEdit} onChange={e => setDescriçãoExitEdit(e.target.value)} placeholder="Descrição" required></Input>
                 <Btn disabled={load} >
-                    {!load?`Salvar Saída`:<Loader/>}
+                    {!load?`Atualizar Saída`:<Loader/>}
                 </Btn>
             </Form>
         </Main>

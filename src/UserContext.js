@@ -94,6 +94,44 @@ export function UserProvider (props){
             throw new Error(error);
         }
     }
+    const postExit = async () => {
+        const params = {
+            email: email,
+            name: name,
+            password: password
+        }
+        try {
+            const req = axios.post(`${URL}/auth/sign-up/`, params);
+            req.then(res => {
+                return res;
+            })
+            .catch(err => {
+                alert(err.response.user);
+            });
+        } 
+        catch (error) {
+            throw new Error(error);
+        }
+    }
+    const postEntry = async () => {
+        const params = {
+            email: email,
+            name: name,
+            password: password
+        }
+        try {
+            const req = axios.post(`${URL}/auth/sign-up/`, params);
+            req.then(res => {
+                return res;
+            })
+            .catch(err => {
+                alert(err.response.user);
+            });
+        } 
+        catch (error) {
+            throw new Error(error);
+        }
+    }
     const putWallet = (props) => {
         const headers = {
             headers: { Authorization: `Bearer ${data.token}`}
@@ -131,7 +169,9 @@ export function UserProvider (props){
     return (
         <UserContext.Provider 
             value={{
-                postSign,postSignUp,token, setToken,data, setData,email,setEmail,user,setUser,password,setPassword,load,setLoad,localmenteLogado,deleteWallet,putWallet,getWallet,wallets,setWallets
+                postSign,postSignUp,token, setToken,data, setData,email,setEmail,user,setUser,
+                password,setPassword,load,setLoad,localmenteLogado,deleteWallet,putWallet,
+                getWallet,wallets,setWallets,postEntry,postExit,
             }}>
             {props.children}
         </UserContext.Provider>

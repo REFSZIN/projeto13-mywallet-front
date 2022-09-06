@@ -5,6 +5,8 @@ export default createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Righteous&display=swap'); 
 @import url('https://fonts.googleapis.com/css2?family=Recursive:wght@300;400;500;600;700;800;900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@300;400;500;600;700&family=Playball&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;700&display=swap');
 
 /* 	
 	font-family: 'Lexend Deca', sans-serif;
@@ -12,6 +14,7 @@ export default createGlobalStyle`
   font-family: 'Righteous', cursive;
 	font-family: 'Roboto', sans-serif; 
   font-family: 'Recursive', sans-serif;
+	font-family: 'Saira Stencil One', cursive;
 	mobileS: '320px',
 	mobileM: '375px',
 	mobileL: '425px',
@@ -30,29 +33,39 @@ export default createGlobalStyle`
 // test: Adding missing tests or correcting existing tests
 */
 
-ion-icon[name="add-outline"]{
+ion-icon[name="exit-outline"]{
 	color: #ffffff;
 	width: 40px;
 	height: 30px;
 }
-ion-icon[name="checkmark-outline"]{
+ion-icon[name="add-circle-outline"]{
 	color: #ffffff;
-	width: 60px;
-	height: 48px;
+	width: 40px;
+	height: 30px;
+	margin: 10px;
 }
-ion-icon[name="trash-outline"]{
+ion-icon[name="remove-circle-outline"]{
+	color: #ffffff;
+	width: 40px;
+	height: 30px;
+	margin: 10px;
+}
+ion-icon[name="close-outline"]{
+	color: #126BA5;
 	width: 20px;
-	height: 28px;
+	height: 20px;
+	position: relative;
+  left: 110px;
 }
-ion-icon[name="checkmark-outline"]:hover{
+ion-icon[name="exit-outline"]:hover{
 	cursor: pointer;
   filter: brightness(1.5);
 }
-ion-icon[name="add-outline"]:hover{
+ion-icon[name="add-circle-outline"]:hover{
 	cursor: pointer;
     filter: brightness(1.5);
 }
-ion-icon[name="trash-outline"]:hover{
+ion-icon[name="remove-circle-outline"]:hover{
 	cursor: pointer;
   filter: brightness(1.5);
 }

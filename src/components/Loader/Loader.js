@@ -5,7 +5,7 @@ export default function Loader(){
     return(
         <>
             <ThreeDots 
-                color="#90BFFF"
+                color="#E5E5E5"
                 height={40} 
                 width={90}
                 margin={40}

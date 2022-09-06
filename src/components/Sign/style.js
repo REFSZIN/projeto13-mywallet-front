@@ -1,8 +1,31 @@
 import styled from 'styled-components';
 
 export const LogoSign = styled.h1`
-    width: 180px;
-    height: 178.38px;
+    width: 147px;
+    height: 50px;
+    left: 113px;
+    top: 159px;
+    font-family: 'Saira Stencil One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+`;
+export const Logo = styled.img`
+    width: 140px;
+    height: 120px;
+    left: 113px;
+    top: 159px;
+    font-family: 'Saira Stencil One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 50px;
+    color: #FFFFFF;
+    margin-bottom: 50px;
+    margin-left: 10px;
 `;
 export const Anime = styled.nav`
     animation: fadeInUp 1s;
@@ -25,16 +48,16 @@ export const FormSign = styled.form`
 `;
 export const InputSign = styled.input`
     width: 303px;
-    height: 45px;
+    height: 55px;
     background: #FFFFFF;
     border: 1px solid #D5D5D5;
     border-radius: 5px;
-    font-family: 'Lexend Deca';
+    font-family: 'Raleway';
     font-style: normal;
     font-weight: 400;
-    font-size: 19.976px;
-    line-height: 25px;
-    color: #323232;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
     margin-bottom: 5px;
     margin-top: 5px;
     padding-left: 10px;
@@ -46,14 +69,13 @@ export const InputSign = styled.input`
 export const BtnSign = styled.button`
     width: 303px;
     height: 45px;
-    font-family: 'Lexend Deca';
+    font-family: 'Raleway';
     font-style: normal;
-    font-weight: 400;
-    font-size: 26px;
-    line-height: 26px;
-    text-align: center;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
     color: #FFFFFF;
-    background: #52B6FF;
+    background: #A328D6;
     border-radius: 4.63636px;
     margin-top: 5px;
     margin-bottom: 30px;
@@ -61,14 +83,22 @@ export const BtnSign = styled.button`
 export const SpanLink = styled.span`
     width: 232px;
     height: 17px;
-    font-family: 'Lexend Deca';
+    font-family: 'Raleway';
     font-style: normal;
-    font-weight: 400;
-    font-size: 13.976px;
-    line-height: 17px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
     text-align: center;
     text-decoration-line: underline;
-    color: #323232;
+    color: #FFFFFF;
+    &:hover{
+    filter: brightness(1.2);
+    }
+`;
+export const Container = styled.nav`
+    justify-content: center;
+    align-items: center;
+    display: flex;
     &:hover{
     filter: brightness(1.2);
     }
