@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import React from "react";
+import ResetCSS from './assets/css/global.js';
+import UserContext from "./UserContext";
+import { UserProvider } from './UserContext.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
-
-export default App;
+export default function App (){
+return (
+    <UserContext.Provider value={UserContext}>
+        <UserProvider>
+            <BrowserRouter>
+            <ResetCSS/>
+                <Routes>
+                    <Route path="/" element={< />}/>
+                    <Route path="/cadastro" element={< />}/>
+                    <Route path="/wallet" element={</>}/>
+                    <Route path="/saida" element={</>}/>
+                    <Route path="/entrada" element={< />}/>
+                </Routes> 
+            </BrowserRouter>
+        </UserProvider>
+    </UserContext.Provider>
+    );
+};
