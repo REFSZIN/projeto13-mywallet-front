@@ -39,6 +39,7 @@ export const Cabeçalho = styled.main`
     left:80%;
 `;
 export const Form  = styled.form`
+    margin-top: 250px;
     font-style: normal;
     font-weight: 400;
     display: flex;

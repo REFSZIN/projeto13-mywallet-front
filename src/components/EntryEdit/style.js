@@ -52,6 +52,7 @@ export const Form  = styled.form`
     align-items: center;
     padding-bottom : 450px;
     animation: lightSpeedInRight 1s ;
+    margin-top: 250px;
 `;
 export const Input  = styled.input`
     width: 303px;

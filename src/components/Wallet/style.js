@@ -66,7 +66,7 @@ export const SpanInfo = styled.main`
 `;
 export const Conteiner = styled.main`
     width: 300px;
-    height: 446px;
+    height: 360px;
     left: 25px;
     top: 78px;
     background: #FFFFFF;
@@ -169,6 +169,8 @@ export const Boxs = styled.main`
     justify-content: center;
     align-items: center;
     margin-top: 10px;
+    position: relative;
+    bottom: -20px;
 `;
 export const Box = styled.main`
     width: 135px;

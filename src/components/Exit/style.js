@@ -40,6 +40,7 @@ export const Cabeçalho = styled.main`
 `;
 export const Form  = styled.form`
     font-style: normal;
+    margin-top: 250px;
     font-weight: 400;
     display: flex;
     font-size: 20px;

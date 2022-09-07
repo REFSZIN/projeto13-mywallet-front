@@ -15,6 +15,18 @@ export const Main  = styled.main`
     background: radial-gradient(circle, rgba(204,170,185,1) 0%, rgba(140,17,190,1) 57%);
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ccaab9",endColorstr="#8c11be",GradientType=1);
 `;
+export const Cabeçalho = styled.main`
+    width: 100%;
+    display: fixed;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top:30px;
+    left:80%;
+`;
 export const Title  = styled.h2`
     font-family: 'Raleway';
     font-style: normal;
@@ -39,19 +51,8 @@ export const Form  = styled.form`
     justify-content: center;
     align-items: center;
     padding-bottom : 450px;
-    animation: lightSpeedInLeft 1s ;
-`;
-export const Cabeçalho = styled.main`
-    width: 100%;
-    display: fixed;
-    flex-direction: row;
-    align-content: center;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    align-items: center;
-    position: fixed;
-    top:30px;
-    left:80%;
+    margin-top: 250px;
+    animation: lightSpeedInRight 1s ;
 `;
 export const Input  = styled.input`
     width: 303px;

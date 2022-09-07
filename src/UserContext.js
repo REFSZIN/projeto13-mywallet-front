@@ -77,7 +77,7 @@ export function UserProvider (props){
             throw new Error(error);
         }
     }
-    const getWallet = (req, res) => {
+    const getWallet = async (req, res) => {
         const headers = {
             headers: { Authorization: `Bearer ${data.token}`}
         }
