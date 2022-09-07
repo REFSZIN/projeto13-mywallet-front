@@ -1,9 +1,9 @@
 import "./style.js";
 import React, { useEffect } from 'react'
-import { Main,Title,Form,Input,Btn,} from "./style.js";
+import { Main,Title,Form,Input,Btn,Cabeçalho} from "./style.js";
 import UserContext from "../../UserContext";
 import { useContext } from "react";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate  ,Link} from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 
 export default function Exit(){
@@ -32,6 +32,11 @@ export default function Exit(){
 
     return(
         <Main>
+            <Cabeçalho>
+                <Link to="/wallet">
+                    <ion-icon name="exit-outline"></ion-icon>
+                </Link>
+            </Cabeçalho>
             <Title>Nova saída</Title>
             <Form onSubmit={createExit}>
                 <Input disabled={!loader} type="email" value={valorExit} onChange={e => setValorExit(e.target.value)} placeholder="Valor"required ></Input>

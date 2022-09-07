@@ -1,9 +1,9 @@
 import "./style.js";
 import React, { useEffect } from 'react'
-import { Main,Title,Form,Input,Btn, } from "./style.js";
+import { Main,Title,Form,Input,Btn,Cabeçalho } from "./style.js";
 import UserContext from "../../UserContext";
 import { useContext } from "react";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate ,Link } from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 
 export default function EntryEdit(){
@@ -32,7 +32,12 @@ export default function EntryEdit(){
 
     return(
         <Main>
-            <Title>Editar Entrada</Title>
+            <Cabeçalho>
+                <Link to="/wallet">
+                    <ion-icon name="exit-outline"></ion-icon>
+                </Link>
+                <Title>Editar Entrada</Title>
+            </Cabeçalho>
             <Form onSubmit={createEntry}>
                 <Input disabled={!loader} type="email" value={valorExit} onChange={e => setValorExit(e.target.value)} placeholder="Valor"required ></Input>
                 <Input disabled={!loader} type="password" value={descriçãoExit} onChange={e => setDescriçãoExit(e.target.value)} placeholder="Descrição" required></Input>

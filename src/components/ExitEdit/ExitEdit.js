@@ -1,9 +1,9 @@
 import "./style.js";
 import React, { useEffect } from 'react'
-import { Main,Title,Form,Input,Btn,} from "./style.js";
+import { Main,Title,Form,Input,Btn,Cabeçalho} from "./style.js";
 import UserContext from "../../UserContext";
 import { useContext } from "react";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate,Link  } from "react-router-dom";
 import Loader from "../Loader/Loader.js";
 
 export default function ExitEdit(){
@@ -32,7 +32,12 @@ export default function ExitEdit(){
 
     return(
         <Main>
-            <Title>Editar saída</Title>
+            <Cabeçalho>
+                <Link to="/wallet">
+                    <ion-icon name="exit-outline"></ion-icon>
+                </Link>
+                <Title>Editar saída</Title>
+            </Cabeçalho>
             <Form onSubmit={createExitEdit}>
                 <Input disabled={!loader} type="email" value={valorExitEdit} onChange={e => setValorExitEdit(e.target.value)} placeholder="Valor"required ></Input>
                 <Input disabled={!loader} type="password" value={descriçãoExitEdit} onChange={e => setDescriçãoExitEdit(e.target.value)} placeholder="Descrição" required></Input>

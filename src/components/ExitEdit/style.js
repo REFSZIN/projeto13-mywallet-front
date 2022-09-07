@@ -26,6 +26,18 @@ export const Title  = styled.h2`
     top: 30px;
     left: 30px;
 `;
+export const Cabeçalho = styled.main`
+    width: 100%;
+    display: fixed;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top:30px;
+    left:80%;
+`;
 export const Form  = styled.form`
     font-style: normal;
     font-weight: 400;
@@ -39,6 +51,7 @@ export const Form  = styled.form`
     justify-content: center;
     align-items: center;
     padding-bottom : 450px;
+    animation: lightSpeedInLeft 1s ;
 `;
 export const Input  = styled.input`
     width: 303px;
@@ -59,6 +72,7 @@ export const Input  = styled.input`
     filter: brightness(1.08);
     box-shadow: 1px 1px 1px 1px #126BA5;
     }
+    
 `;
 export const Btn  = styled.button`
     width: 306px;

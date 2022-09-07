@@ -25,6 +25,7 @@ export const Cabeçalho = styled.main`
     align-items: center;
     position: fixed;
     top:30px;
+    animation: headShake 1s ;
 `;
 export const Title = styled.main`
     width: 141px;
@@ -51,7 +52,8 @@ export const ConteinerInfo = styled.main`
     align-content: center;
     flex-wrap: wrap;
     flex-direction: column;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
+    animation: fadeInDown 2s ;
 `;
 export const SpanInfo = styled.main`
     font-family: 'Raleway';
@@ -75,7 +77,8 @@ export const Conteiner = styled.main`
     flex-direction: column;
     align-content: space-around;
     flex-wrap: wrap;
-    border-radius: 5px;
+    border-radius: 5px 5px 0px 0px;
+    animation: fadeInDown 2s ;
 `;
 export const Registro = styled.main`
     display: flex;
@@ -87,6 +90,46 @@ export const Registro = styled.main`
     height: 40px;
     background-color:RGBA(212,137,229,0.3);
 `;
+export const SaldoReal = styled.main`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: right;
+    color: #03AC00;
+`;
+export const InfoSaldo = styled.main`
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    width: 300px;
+    height: 36px;
+    left: 25px;
+    top: 78px;
+    background: #FFFFFF;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+    flex-wrap: wrap;
+    border-radius: 0px 0px 5px 5px; 
+    animation: fadeInRight 1s ;
+`;
+export const TitleSaldo = styled.main`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+    color: #000000;
+`;
+
 export const DataWalet = styled.main`
     font-family: 'Raleway';
     font-style: normal;
@@ -125,6 +168,7 @@ export const Boxs = styled.main`
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    margin-top: 10px;
 `;
 export const Box = styled.main`
     width: 135px;
@@ -134,7 +178,7 @@ export const Box = styled.main`
     background: #A328D6;
     border-radius: 5px;
     margin-right: 10px;
-    margin-top: 10px;
+    animation: bounceInUp 2s ;
 `;
 export const Entrada = styled.main`
     font-family: 'Raleway';

@@ -2,7 +2,7 @@ import "./style.js";
 import UserContext from "../../UserContext";
 import { useContext,useEffect} from "react";
 import React from 'react'
-import {Main,Cabeçalho,Title,ConteinerInfo,SpanInfo,Conteiner,Registro,DataWalet,TitleWalet,ValorWalet,Boxs,Box,Entrada,Saida} from "./style.js";
+import {Main,Cabeçalho,Title,ConteinerInfo,SpanInfo,Conteiner,Registro,DataWalet,TitleWalet,ValorWalet,Boxs,Box,Entrada,Saida,SaldoReal,InfoSaldo,TitleSaldo} from "./style.js";
 import {Link} from "react-router-dom";
 export default function Wallet(){
     const {setLoad} = useContext(UserContext);
@@ -25,9 +25,9 @@ export default function Wallet(){
                     <ion-icon name="exit-outline"></ion-icon>
                 </Link>
             </Cabeçalho>
-            <ConteinerInfo>
+            {/* <ConteinerInfo>
                 <SpanInfo>Não há registros de <br/>entrada ou saída</SpanInfo>
-            </ConteinerInfo>
+            </ConteinerInfo> */}
             <Conteiner>
                 <Registro>
                     <DataWalet>23/03</DataWalet>
@@ -39,7 +39,11 @@ export default function Wallet(){
                     </Link>
                         <ion-icon onClick={() => deleteHabit()} name="close-outline"></ion-icon>
                 </Registro>
-            </Conteiner>
+            </Conteiner>                
+            <InfoSaldo>
+                <TitleSaldo>SALDO</TitleSaldo>
+                <SaldoReal>12321.05</SaldoReal>
+            </InfoSaldo>
             <Boxs>
                 <Link to="/entrada" >
                     <Box>

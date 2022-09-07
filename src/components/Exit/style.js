@@ -26,6 +26,18 @@ export const Title  = styled.h2`
     top: 30px;
     left: 30px;
 `;
+export const Cabeçalho = styled.main`
+    width: 100%;
+    display: fixed;
+    flex-direction: row;
+    align-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    top:30px;
+    left:80%;
+`;
 export const Form  = styled.form`
     font-style: normal;
     font-weight: 400;
@@ -39,6 +51,7 @@ export const Form  = styled.form`
     justify-content: center;
     align-items: center;
     padding-bottom : 450px;
+    animation: lightSpeedInRight 1s ;
 `;
 export const Input  = styled.input`
     width: 303px;
