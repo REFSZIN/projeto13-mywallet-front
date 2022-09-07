@@ -55,7 +55,7 @@ ion-icon[name="close-outline"]{
 	width: 20px;
 	height: 20px;
 	position: relative;
-  left: 110px;
+  left: 80px;
 }
 ion-icon[name="exit-outline"]:hover{
 	cursor: pointer;
