@@ -1,4 +1,4 @@
-import Edit from "../components/ExitEdit/Edit.js";
+import Edit from "../components/Edit/Edit.js";
 import React from 'react';
 
 export default function PageEdit(){

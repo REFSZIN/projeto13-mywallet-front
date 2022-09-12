@@ -8,23 +8,25 @@ import logo from "../../assets/images/logo.ico";
 import {Link,useNavigate} from "react-router-dom";
 
 export default function Sign(){
-    const {email,setEmail,password,setPassword,postSign,load,setLoad,localmenteLogado} = useContext(UserContext);
+    const {email,setEmail,password,setPassword,postSign,load,setLoad,localmenteLogado,loader,setLoader} = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         localmenteLogado();
         setLoad(0);
+        setLoader(1);
     }, []);
 
     function login(event) {
         event.preventDefault();
         setLoad(1);
+        setLoader(0);
         postSign()
             .then(() => {
                 setLoad(0);
                 setTimeout(() => {
                 navigate("/wallet");
-                }, 1000);
+                }, 2000);
             })
             .catch(e => {
                 setLoad(0);
@@ -41,7 +43,7 @@ export default function Sign(){
                 <InputSign type="email" disabled={load} value={email} placeholder="E-mail" onChange={e => setEmail(e.target.value)} required></InputSign>
                 <InputSign type="password" disabled={load} value={password} placeholder="Senha" onChange={e => setPassword(e.target.value)} required></InputSign>
                 <BtnSign disabled={load} type="submit">
-                    { load ? <Loader/> :`Entrar`}
+                    { !loader ? <Loader/> :`Entrar`}
                 </BtnSign>
             </FormSign>
             <Link to="/cadastro"><SpanLink>Não tem uma conta? Cadastre-se!</SpanLink></Link>

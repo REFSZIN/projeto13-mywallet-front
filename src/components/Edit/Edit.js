@@ -16,12 +16,13 @@ export default function Edit(){
         }
         setValorPut('');
         setDescPut('');
+        setLoader(1);
     }, []);
 
     const createEdit =  async (create) =>{
         create.preventDefault();
-        setLoader(1);
-        setLoad(1);
+        setLoader(0);
+        setLoad(0);
         putWallet();
         navigate("/wallet");
     };

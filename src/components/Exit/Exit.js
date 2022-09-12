@@ -14,14 +14,16 @@ export default function Exit(){
         if( localStorage.length > 0){
             localmenteLogado();
         }
+        setLoad(1);
+        setLoader(1);
         setValorExit('');
         setDescExit('');
     }, []);
 
     const createExit = (create) =>{
         create.preventDefault();
-        setLoader(1);
-        setLoad(1);
+        setLoader(0);
+        setLoad(0);
         postExit()
         .then(() => {
             setLoad(0);

@@ -2,11 +2,12 @@ import "./style.js";
 import UserContext from "../../UserContext";
 import { useContext,useEffect} from "react";
 import React from 'react'
-import {Main,Cabeçalho,Title, SpanInfo, ConteinerInfo ,Conteiner,Registro,DataWalet,TitleWalet,ValorWalet,Boxs,Box,Entrada,Saida,SaldoReal,InfoSaldo,TitleSaldo,ValorWaletEntry} from "./style.js";
+import {Main,Cabeçalho,Title, SpanInfo, ConteinerInfo ,Conteiner,Registro,DataWalet,TitleWalet,ValorWalet,Boxs,Box,Entrada,Saida,SaldoReal,InfoSaldo,TitleSaldo,ValorWaletEntry,SaldoRealRed} from "./style.js";
 import {Link} from "react-router-dom";
 
 export default function Wallet(){
     const {setLoad, deleteWallet, data, wallets, localmenteLogado,getWallet,setIdPut} = useContext(UserContext);
+    let saldo = 0;
     useEffect(() => {
         if( localStorage.length > 0){
             localmenteLogado();
@@ -16,15 +17,23 @@ export default function Wallet(){
     }, []);
 
     const deleteHabit = (props) =>{
-        let result = window.confirm('Are you sure you want to delete?');
-        let message = result ?"DELETED":'UNDELETE';
+        let result = window.confirm('Tem certeza que deseja Excluir ?');
+        let message = result ?"DELETAR":'NÃO DELETAR';
         alert(message);
         getWallet();
         if(message === "DELETED"){
             deleteWallet(props);
             getWallet();
+    };}
+
+    for (let i = 0; i < wallets.length; i++) {
+        if (wallets[i].true === true) {
+            saldo += Number(wallets[i].valor);
         }
-    };
+        else{
+            saldo -= Number(wallets[i].valor);
+        }}
+
     return(
         <Main>
             <Cabeçalho>
@@ -38,6 +47,7 @@ export default function Wallet(){
                     ? <>
                         <Conteiner>
                         {wallets.map((registro, i) => {
+                            
                         return (
                             <Registro key={i}>
                                 <DataWalet>{registro.date}</DataWalet>
@@ -52,7 +62,7 @@ export default function Wallet(){
                         </Conteiner>
                         <InfoSaldo>
                             <TitleSaldo>SALDO</TitleSaldo>
-                            <SaldoReal>{wallets.valor}</SaldoReal>
+                            {saldo >= 0 ? <SaldoReal>{saldo}</SaldoReal> : <SaldoRealRed>{saldo}</SaldoRealRed>}
                         </InfoSaldo>
                     </>
                 :

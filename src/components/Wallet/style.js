@@ -99,6 +99,15 @@ export const SaldoReal = styled.main`
     text-align: right;
     color: #03AC00;
 `;
+export const SaldoRealRed = styled.main`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    text-align: right;
+    color: #C70000;
+`;
 export const InfoSaldo = styled.main`
     display: flex;
     justify-content: space-between;

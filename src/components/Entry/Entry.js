@@ -15,6 +15,7 @@ export default function Entry(){
             localmenteLogado();
         }
         setLoad(0);
+        setLoader(1);
         setDescEntry('');
         setValorEntry('');
     }, []);
@@ -22,7 +23,7 @@ export default function Entry(){
     const createEntry = (create) =>{
         create.preventDefault();
         setLoader(1);
-        setLoad(1);
+        setLoad(0);
         postEntry()
         .then(() => {
             setLoad(1);
