@@ -17,11 +17,11 @@ export default function Wallet(){
     }, []);
 
     const deleteHabit = (props) =>{
-        let result = window.confirm('Tem certeza que deseja Excluir ?');
-        let message = result ?"DELETAR":'NÃO DELETAR';
+        let result = window.confirm('Tem certeza de que deseja excluir?');
+        let message = result ?"DELETADO":'MANTIDO';
         alert(message);
         getWallet();
-        if(message === "DELETED"){
+        if(message === "DELETADO"){
             deleteWallet(props);
             getWallet();
     };}

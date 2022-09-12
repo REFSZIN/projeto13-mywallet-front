@@ -22,7 +22,7 @@ export default function Sign(){
         setLoad(1);
         setLoader(0);
         postSign()
-            .then(() => {
+        .then(() => {
                 setLoad(0);
                 setTimeout(() => {
                 navigate("/wallet");
