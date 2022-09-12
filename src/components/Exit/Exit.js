@@ -8,17 +8,20 @@ import Loader from "../Loader/Loader.js";
 
 export default function Exit(){
     const navigate = useNavigate();
-    const {localmenteLogado,postExit, load, setLoad,valorExit,descriçãoExit,setValorExit,setDescriçãoExit,loader,setLoader} = useContext(UserContext);
+    const {localmenteLogado,postExit,load,setLoad,valorExit,descExit,setValorExit,setDescExit,loader,setLoader} = useContext(UserContext);
 
     useEffect(() => {
         if( localStorage.length > 0){
             localmenteLogado();
         }
-    }, [localmenteLogado]);
+        setValorExit('');
+        setDescExit('');
+    }, []);
 
     const createExit = (create) =>{
         create.preventDefault();
         setLoader(1);
+        setLoad(1);
         postExit()
         .then(() => {
             setLoad(0);
@@ -26,7 +29,7 @@ export default function Exit(){
         })
         .catch(e => {
             setLoad(0);
-            alert(e.response.user.message);
+            alert(e.response);
         });
     };
 
@@ -39,10 +42,10 @@ export default function Exit(){
             </Cabeçalho>
             <Title>Nova saída</Title>
             <Form onSubmit={createExit}>
-                <Input disabled={!loader} type="email" value={valorExit} onChange={e => setValorExit(e.target.value)} placeholder="Valor"required ></Input>
-                <Input disabled={!loader} type="password" value={descriçãoExit} onChange={e => setDescriçãoExit(e.target.value)} placeholder="Descrição" required></Input>
-                <Btn disabled={load} >
-                    {!load?`Salvar Saída`:<Loader/>}
+                <Input disabled={!loader} type="number" value={valorExit} onChange={e => setValorExit(e.target.value)} placeholder="Valor"required ></Input>
+                <Input disabled={!loader} type="text" value={descExit} onChange={e => setDescExit(e.target.value)} placeholder="Descrição" required></Input>
+                <Btn disabled={!load} >
+                    {load?`Salvar Saída`:<Loader/>}
                 </Btn>
             </Form>
         </Main>

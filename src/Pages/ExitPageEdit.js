@@ -1,5 +1,5 @@
 
-import ExitEdit from "../components/ExitEdit/ExitEdit.js";
+import ExitEdit from "../components/Edit/Edit.js";
 import React from 'react';
 
 export default function ExitPageEdit(){

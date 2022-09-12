@@ -8,25 +8,29 @@ import Loader from "../Loader/Loader.js";
 
 export default function Entry(){
     const navigate = useNavigate();
-    const {localmenteLogado,postEntry, load, setLoad,valorExit,descriçãoExit,setValorExit,setDescriçãoExit,loader,setLoader} = useContext(UserContext);
+    const {localmenteLogado,postEntry, load, setLoad,valorEntry,descEntry,setValorEntry,setDescEntry,loader,setLoader} = useContext(UserContext);
 
     useEffect(() => {
         if( localStorage.length > 0){
             localmenteLogado();
         }
-    }, [localmenteLogado]);
+        setLoad(0);
+        setDescEntry('');
+        setValorEntry('');
+    }, []);
 
     const createEntry = (create) =>{
         create.preventDefault();
         setLoader(1);
+        setLoad(1);
         postEntry()
         .then(() => {
-            setLoad(0);
+            setLoad(1);
             navigate("/wallet");
         })
         .catch(e => {
             setLoad(0);
-            alert(e.response.user.message);
+            alert(e);
         });
     };
 
@@ -39,8 +43,8 @@ export default function Entry(){
                 <Title>Nova Entrada</Title>
             </Cabeçalho>
             <Form onSubmit={createEntry}>
-                <Input disabled={!loader} type="email" value={valorExit} onChange={e => setValorExit(e.target.value)} placeholder="Valor"required ></Input>
-                <Input disabled={!loader} type="password" value={descriçãoExit} onChange={e => setDescriçãoExit(e.target.value)} placeholder="Descrição" required></Input>
+                <Input disabled={!loader} type="number" value={valorEntry} onChange={e => setValorEntry(e.target.value)} placeholder="Valor"required ></Input>
+                <Input disabled={!loader} type="text" value={descEntry} onChange={e => setDescEntry(e.target.value)} placeholder="Descrição" required></Input>
                 <Btn disabled={load} >
                     {!load?`Salvar Entrada`:<Loader/>}
                 </Btn>

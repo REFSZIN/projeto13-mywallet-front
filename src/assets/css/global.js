@@ -50,12 +50,17 @@ ion-icon[name="remove-circle-outline"]{
 	height: 30px;
 	margin: 10px;
 }
+a{
+text-decoration:nome;
+}
 ion-icon[name="close-outline"]{
 	color: #126BA5;
 	width: 20px;
 	height: 20px;
-	position: relative;
-  left: 80px;
+	position: absolute;
+  right: 20px;
+  margin-top: 10px;
+	cursor: pointer;
 }
 ion-icon[name="exit-outline"]:hover{
 	cursor: pointer;

@@ -39,7 +39,7 @@ export const Title = styled.main`
 `;
 export const ConteinerInfo = styled.main`
     width: 300px;
-    height: 446px;
+    height: 340px;
     left: 25px;
     top: 78px;
     background: #FFFFFF;
@@ -66,7 +66,7 @@ export const SpanInfo = styled.main`
 `;
 export const Conteiner = styled.main`
     width: 300px;
-    height: 360px;
+    height: 320px;
     left: 25px;
     top: 78px;
     background: #FFFFFF;
@@ -76,7 +76,7 @@ export const Conteiner = styled.main`
     display: flex;
     flex-direction: column;
     align-content: space-around;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     border-radius: 5px 5px 0px 0px;
     animation: fadeInDown 2s ;
 `;
@@ -88,7 +88,7 @@ export const Registro = styled.main`
     flex-direction: row;
     width: 100%;
     height: 40px;
-    background-color:RGBA(212,137,229,0.3);
+    position: relative;
 `;
 export const SaldoReal = styled.main`
     font-family: 'Raleway';
@@ -136,7 +136,7 @@ export const DataWalet = styled.main`
     font-weight: 400;
     font-size: 16px;
     line-height: 19px;
-    color: RGB(186,195,186);
+    color: #C6C6C6;
     margin-left: 10px;
     margin-right: 10px;
 `;
@@ -149,6 +149,7 @@ export const TitleWalet = styled.main`
     color: #000000;
     margin-left: 5px;
 `;
+
 export const ValorWalet = styled.main`
     font-family: 'Raleway';
     font-style: normal;
@@ -158,8 +159,18 @@ export const ValorWalet = styled.main`
     text-align: right;
     color: #C70000;
     margin-left: 10px;
-    position: relative;
-    left: 80px;
+	position: sticky;
+`;
+export const ValorWaletEntry = styled.main`
+    font-family: 'Raleway';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: right;
+    color: #03AC00;
+    margin-left: 10px;
+	position: sticky;
 `;
 export const Boxs = styled.main`
     display: flex;

@@ -2,48 +2,64 @@ import "./style.js";
 import UserContext from "../../UserContext";
 import { useContext,useEffect} from "react";
 import React from 'react'
-import {Main,Cabeçalho,Title,ConteinerInfo,SpanInfo,Conteiner,Registro,DataWalet,TitleWalet,ValorWalet,Boxs,Box,Entrada,Saida,SaldoReal,InfoSaldo,TitleSaldo} from "./style.js";
+import {Main,Cabeçalho,Title, SpanInfo, ConteinerInfo ,Conteiner,Registro,DataWalet,TitleWalet,ValorWalet,Boxs,Box,Entrada,Saida,SaldoReal,InfoSaldo,TitleSaldo,ValorWaletEntry} from "./style.js";
 import {Link} from "react-router-dom";
+
 export default function Wallet(){
-    const {setLoad} = useContext(UserContext);
+    const {setLoad, deleteWallet, data, wallets, localmenteLogado,getWallet,setIdPut} = useContext(UserContext);
     useEffect(() => {
+        if( localStorage.length > 0){
+            localmenteLogado();
+        }
         setLoad(0);
-    }, [setLoad]);
+        getWallet();
+    }, []);
 
     const deleteHabit = (props) =>{
         let result = window.confirm('Are you sure you want to delete?');
         let message = result ?"DELETED":'UNDELETE';
         alert(message);
+        getWallet();
         if(message === "DELETED"){
+            deleteWallet(props);
+            getWallet();
         }
     };
     return(
         <Main>
             <Cabeçalho>
-                <Title>Olá, Fulano</Title>
+                <Title>Olá, {data.name}</Title>
                 <Link to="/">
                     <ion-icon name="exit-outline"></ion-icon>
                 </Link>
             </Cabeçalho>
-            {/* <ConteinerInfo>
-                <SpanInfo>Não há registros de <br/>entrada ou saída</SpanInfo>
-            </ConteinerInfo> */}
-            <Conteiner>
-                <Registro>
-                    <DataWalet>23/03</DataWalet>
-                    <Link to="/editentrada" >
-                        <TitleWalet>Compras</TitleWalet>
-                    </Link>
-                    <Link to="/editsaida" >
-                        <ValorWalet>500</ValorWalet>
-                    </Link>
-                        <ion-icon onClick={() => deleteHabit()} name="close-outline"></ion-icon>
-                </Registro>
-            </Conteiner>                
-            <InfoSaldo>
-                <TitleSaldo>SALDO</TitleSaldo>
-                <SaldoReal>12321.05</SaldoReal>
-            </InfoSaldo>
+                
+                {wallets.length !== 0 
+                    ? <>
+                        <Conteiner>
+                        {wallets.map((registro, i) => {
+                        return (
+                            <Registro key={i}>
+                                <DataWalet>{registro.date}</DataWalet>
+                                <Link to="/edit" onClick={() => setIdPut(registro._id)}>
+                                    <TitleWalet>{registro.description}</TitleWalet>
+                                </Link>
+                                    { registro.true === true ? <ValorWaletEntry>{registro.valor}</ValorWaletEntry> : <ValorWalet>{registro.valor}</ValorWalet>}
+                                <ion-icon id={registro._id} onClick={() => deleteHabit(registro._id)} name="close-outline"></ion-icon>
+                            </Registro>
+                        )
+                    })}
+                        </Conteiner>
+                        <InfoSaldo>
+                            <TitleSaldo>SALDO</TitleSaldo>
+                            <SaldoReal>{wallets.valor}</SaldoReal>
+                        </InfoSaldo>
+                    </>
+                :
+                <ConteinerInfo>
+                    <SpanInfo>Não há registros de <br/>entrada ou saída</SpanInfo>
+                </ConteinerInfo>
+            }
             <Boxs>
                 <Link to="/entrada" >
                     <Box>

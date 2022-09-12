@@ -6,14 +6,15 @@ import {Container, Anime,LogoSign,Logo,FormSign,InputSign,BtnSign,SpanLink} from
 import {useContext, useEffect} from "react";
 import logo from "../../assets/images/logo.ico";
 import {Link,useNavigate} from "react-router-dom";
-export default function Sing(){
+
+export default function Sign(){
     const {email,setEmail,password,setPassword,postSign,load,setLoad,localmenteLogado} = useContext(UserContext);
     const navigate = useNavigate();
 
     useEffect(() => {
         localmenteLogado();
         setLoad(0);
-    }, [localmenteLogado,setLoad]);
+    }, []);
 
     function login(event) {
         event.preventDefault();
@@ -22,11 +23,10 @@ export default function Sing(){
             .then(() => {
                 setLoad(0);
                 setTimeout(() => {
-                    navigate("/wallet");
+                navigate("/wallet");
                 }, 1000);
             })
             .catch(e => {
-                alert(e.response.user.message);
                 setLoad(0);
                 navigate("/");
             });

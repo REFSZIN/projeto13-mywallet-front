@@ -4,21 +4,30 @@ import axios from "axios";
 
 const UserContext = createContext();
 export default UserContext;
+
 export function UserProvider (props){
     const [token, setToken] = useState(null);
     const [data, setData] = useState(JSON.parse(localStorage.getItem("user")));
     const [email,setEmail] = useState('');
     const [name,setName] = useState('');
-    const [user,setUser] = useState('');
     const [password,setPassword] = useState('');
-    const [load,setLoad] = useState(false);
-    const URL =`https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit` 
+    const [confirmPassword,setConfirmPassword] = useState('');
+    const [load,setLoad] = useState(0);
     const [wallets, setWallets] = useState([]);
+    const [valorExit , setValorExit] = useState('');
+    const [descExit , setDescExit] = useState('');
+    const [valorEntry , setValorEntry] = useState('');
+    const [descEntry , setDescEntry] = useState('');
+    const [valorPut , setValorPut] = useState('');
+    const [descPut , setDescPut] = useState('');
+    const [loader,setLoader] = useState(1);
+    const [idPut,setIdPut] = useState('');
+    const URL ="http://localhost:5000";
 
     const localmenteLogado = () => {
-        if (performance.navigation.type === performance.navigation.TYPE_RELOAD && localStorage.length > 0) {
+        if (performance.navigation.type === performance.navigation.TYPE_RELOAD || localStorage.length > 0) {
             setLoad(1);
-            axios.post(`${URL}/auth/login/`,
+            axios.post(`${URL}/auth/sign-in`,
                 {
                     email: data.email,
                     password: data.password,
@@ -29,28 +38,27 @@ export function UserProvider (props){
                 setData(res.data);
             })
             .catch(err => {
-                alert(err.response.data.message);
                 setLoad(0);
             });
         }
     }
     const postSign = async () => {
-        const params = 
+        const body = 
         {
             email: email,
             password: password
         }
         try {
-            const req = axios.post(`${URL}/auth/sign-in/`, params);
+            const req = axios.post(`${URL}/auth/sign-in`, body);
             req.then(res => {
                 setToken(res.data.token);
-                setName(res.data.name);   
+                setName(res.data.name);
                 setLoad(0);
-                setData(res.data)
-                localStorage.setItem("user",JSON.stringify(res.data))
+                setData(res.data);
+                localStorage.setItem("user",JSON.stringify(res.data));
             })
             req.catch(err => {
-                alert(err.response.data.message);
+                alert(err);
                 setLoad(0);
             });
         } 
@@ -60,34 +68,36 @@ export function UserProvider (props){
     }
     const postSignUp = async () => {
         const params = {
-            email: email,
             name: name,
-            password: password
+            email: email,
+            password: password,
+            password_confirmation: confirmPassword
         }
+
         try {
-            const req = axios.post(`${URL}/auth/sign-up/`, params);
+            const req = axios.post(`http://localhost:5000/auth/sign-up`, params);
             req.then(res => {
                 return res;
             })
             .catch(err => {
-                alert(err.response.user);
+                alert(err);
             });
         } 
         catch (error) {
             throw new Error(error);
         }
     }
-    const getWallet = async (req, res) => {
+    const getWallet = async () => {
         const headers = {
             headers: { Authorization: `Bearer ${data.token}`}
         }
         try {
-            const req = axios.get(`${URL}/habits`, headers);
+            const req = axios.get(`${URL}/wallet`, headers);
             req.then(res => {
-
+                setWallets(res.data)
             })
             .catch(err => {
-                alert(err.response.data);
+                alert(err.data);
             });
         } 
         catch (error) {
@@ -95,18 +105,20 @@ export function UserProvider (props){
         }
     }
     const postExit = async () => {
-        const params = {
-            email: email,
-            name: name,
-            password: password
+        const headers = {
+            headers: { Authorization: `Bearer ${data.token}`}
+        }
+        const body  = {
+            valor: valorExit,
+            description: descExit,
         }
         try {
-            const req = axios.post(`${URL}/auth/sign-up/`, params);
+            const req = axios.post(`${URL}/exit`, body , headers);
             req.then(res => {
                 return res;
             })
             .catch(err => {
-                alert(err.response.user);
+                alert(err);
             });
         } 
         catch (error) {
@@ -114,36 +126,43 @@ export function UserProvider (props){
         }
     }
     const postEntry = async () => {
-        const params = {
-            email: email,
-            name: name,
-            password: password
+        const body  = {
+            valor: valorEntry,
+            description: descEntry,
+        }
+
+        const headers = {
+            headers: { Authorization: `Bearer ${data.token}`}
         }
         try {
-            const req = axios.post(`${URL}/auth/sign-up/`, params);
+            const req = axios.post(`${URL}/entry`, body , headers);
             req.then(res => {
                 return res;
             })
             .catch(err => {
-                alert(err.response.user);
+                alert(err);
             });
         } 
         catch (error) {
             throw new Error(error);
         }
     }
-    const putWallet = (props) => {
+    const putWallet = () => {
         const headers = {
             headers: { Authorization: `Bearer ${data.token}`}
         }
+        const body  = {
+            valor: valorPut,
+            description: descPut
+        }
         try {
-            const req = axios.post(`${URL}/habits/${props}/uncheck`,{}, headers);
+            const req = axios.put(`${URL}/edit/wallet/${idPut}`, body, headers);
             req.then(res => {
-                return res;
+                return true;
             })
-                .catch(err => {
-                    alert(err.response.data);
-                });
+            .catch(err => {
+                alert(err.data);
+            });
         } 
         catch (error) {
             throw new Error(error);
@@ -154,24 +173,27 @@ export function UserProvider (props){
             headers: { Authorization: `Bearer ${data.token}`}
         }
         try {
-            const req = axios.post(`${URL}/habits/${props}/uncheck`,{}, headers);
+            const req = axios.delete(`${URL}/del/wallet/${props}`, headers);
             req.then(res => {
                 return res;
             })
                 .catch(err => {
-                    alert(err.response.data);
+                    alert(err.data);
                 });
         } 
         catch (error) {
             throw new Error(error);
         }
     }
+    
     return (
         <UserContext.Provider 
-            value={{
-                postSign,postSignUp,token, setToken,data, setData,email,setEmail,user,setUser,
-                password,setPassword,load,setLoad,localmenteLogado,deleteWallet,putWallet,
-                getWallet,wallets,setWallets,postEntry,postExit,
+            value={{ 
+                token, setToken, data, setData, email, setEmail, name, setName,
+                password,setPassword, confirmPassword, setConfirmPassword, load, setLoad, 
+                wallets, setWallets, valorExit , setValorExit , descExit , setDescExit, valorEntry , setValorEntry ,
+                descEntry , setDescEntry, valorPut , setValorPut , descPut , setDescPut , localmenteLogado , postSign,
+                postSignUp, getWallet,postExit, postEntry, putWallet, deleteWallet, loader,setLoader,idPut,setIdPut
             }}>
             {props.children}
         </UserContext.Provider>
