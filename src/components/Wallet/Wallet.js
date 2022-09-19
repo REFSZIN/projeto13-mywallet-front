@@ -14,6 +14,7 @@ export default function Wallet(){
         }
         setLoad(0);
         getWallet();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const deleteHabit = (props) =>{
